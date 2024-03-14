@@ -12,4 +12,4 @@ data <- read_csv("startup data.csv")
 
 data %>% is.na() %>% colSums() # check NAs per column
 
-# 
+data
