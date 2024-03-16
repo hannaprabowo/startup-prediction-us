@@ -12,4 +12,8 @@ data <- read_csv("startup data.csv")
 
 data %>% is.na() %>% colSums() # check NAs per column
 
-data
+# clean data
+final_data <- data[,-c(1:14,23,40,47)] # remove all NAs column
+final_data <- final_data[, which(colMeans(!is.na(final_data)) > 0.8)] # remove columns that has more than 80% NA
+
+final_data
