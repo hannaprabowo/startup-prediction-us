@@ -12,8 +12,13 @@ data <- read_csv("startup data.csv")
 
 data %>% is.na() %>% colSums() # check NAs per column
 
-# clean data
+colnames(data)
+
+# clean data by removing columns that has NAs
 final_data <- data[,-c(1:14,23,40,47)] # remove all NAs column
 final_data <- final_data[, which(colMeans(!is.na(final_data)) > 0.8)] # remove columns that has more than 80% NA
 
-final_data
+# We can see there are still empty values in the First and Last Milestone data, particularly for startups that are already closed
+# Because NAs can hinder the performance of the analyses, this value will be filled with 0 
+
+final_data_test 
