@@ -21,4 +21,10 @@ final_data <- final_data[, which(colMeans(!is.na(final_data)) > 0.8)] # remove c
 # We can see there are still empty values in the First and Last Milestone data, particularly for startups that are already closed
 # Because NAs can hinder the performance of the analyses, this value will be filled with 0 
 
-final_data_test 
+final_data %>% 
+  mutate(age_first_milestone_year = ifelse(is.na(age_first_milestone_year),
+                                         0, age_first_milestone_year)) %>% View()
+
+
+
+final_data %>% is.na() %>% colSums() # check NAs per column
