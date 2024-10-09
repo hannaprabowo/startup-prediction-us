@@ -31,6 +31,11 @@ final_data2 <- final_data %>%
 
 final_data2 %>% is.na() %>% colSums() # check NAs per column
 
+final_data2$status %>% str()
 
-
+# change to factors
+final_data2$status <- mapvalues(final_data2$status, 
+                                from = c('acquired', 'closed'),
+                                to = c('acquired','closed'))
+final_data2$status <- as.factor(final_data2$status) # change to factor for target variable
 
