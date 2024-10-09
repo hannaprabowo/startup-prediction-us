@@ -33,9 +33,11 @@ final_data2 %>% is.na() %>% colSums() # check NAs per column
 
 final_data2$status %>% str()
 
-# change to factors
+# change to factors for whether a startup is Acquired / Closed
 final_data2$status <- mapvalues(final_data2$status, 
                                 from = c('acquired', 'closed'),
                                 to = c(1,0)) # 1 = acquired, 0 = close
 final_data2$status <- as.factor(final_data2$status) # change to factor for target variable
+
+
 
