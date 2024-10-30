@@ -84,7 +84,7 @@ logistic_model <- glm(status ~ .,
                       family = binomial)
 
 predictions.log <- predict(logistic_model, newdata = test, type = "response")
-predictions.log <- as.factor(ifelse(predictions.log > 0.5, "1", "0")) # 1
+predictions.log <- as.factor(ifelse(predictions.log > 0.5, "1", "0")) # 1 = acquired, 0 = closed
 confmatrix.log <- confusionMatrix(predictions.log, test$status, positive = "1", mode = 'everything')
 print(confmatrix.log) # confusion matrix
 
