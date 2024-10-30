@@ -72,5 +72,22 @@ index <- createDataPartition(final_data2$status, p = .7, list = FALSE)
 train <- final_data2[ index,]
 test  <- final_data2[-index,]
 
+##########################################################
+################### BUILD MODELS #########################
+##########################################################  
+
+#### LOGISTIC REGRESSION ####
+
+set.seed(1000)
+logistic_model <- glm(status ~ .,
+                      data = train,
+                      family = binomial)
+
+predictions.log <- predict(logistic_model, newdata = test, type = "response")
+predictions.log <- as.factor(ifelse(predictions.log > 0.5, "1", "0")) # 1
+confmatrix.log <- confusionMatrix(predictions.log, test$status, positive = "1", mode = 'everything')
+print(confmatrix.log) # confusion matrix
+
+train$status %>% table()
 
 
