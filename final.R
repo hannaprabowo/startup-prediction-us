@@ -81,7 +81,7 @@ test  <- final_data2[-index,]
 set.seed(1000)
 logistic_model <- glm(status ~ .,
                       data = train,
-                      family = binomial)
+                      family = binomial) # y = status of company, 0 = closed, 1 = acquired
 
 predictions.log <- predict(logistic_model, newdata = test, type = "response")
 predictions.log <- as.factor(ifelse(predictions.log > 0.5, "1", "0")) # 1 = acquired, 0 = closed
