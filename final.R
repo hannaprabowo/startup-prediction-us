@@ -88,6 +88,5 @@ predictions.log <- as.factor(ifelse(predictions.log > 0.5, "1", "0")) # 1 = acqu
 confmatrix.log <- confusionMatrix(predictions.log, test$status, positive = "1", mode = 'everything')
 print(confmatrix.log) # confusion matrix
 
-train$status %>% table()
-
+summary(logistic_model) #company's status as top 500 highly determined the success of startup
 
