@@ -39,7 +39,7 @@ final_data2$status <- mapvalues(final_data2$status,
                                 to = c(1,0)) # 1 = acquired, 0 = close
 final_data2$status <- as.factor(final_data2$status) # change to factor for target variable
 
-## convert the one hot encoding
+## convert to one hot encoding
 
 # state
 state <- as.factor(ifelse(final_data2$is_CA == 1, "CA",
