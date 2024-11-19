@@ -96,9 +96,9 @@ set.seed(1000)
 dt_model <- rpart(status ~., 
                   data = train,
                   method = 'class')
-predictions.dt <- predict(dt, type="class", newdata = test)
+predictions.dt <- predict(dt_model, type="class", newdata = test)
 confmatrix.dt <- confusionMatrix(predictions.dt, test$status, positive = "1")
-print(confmatrix.dt) # confusion matrix
+print(confmatrix.dt) # dt's confusion matrix
 
 
 
