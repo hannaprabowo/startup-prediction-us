@@ -77,10 +77,10 @@ test  <- final_data2[-index,]
 ##########################################################  
 
 # 4 models will be build to predict startup's success from basic to a more advanced prediction models
-# 1 - Logistic Regression 
-# 2 - Decision Trees
-# 3 - Bagging
-# 4 - Random Forest
+# 1 - Logistic Regression -- Statistical model used to predict probability of binary outcome (success/failed)
+# 2 - Decision Trees -- Machine learning model that uses tree like structure (i.e., branches to split data) to predict the outcome 
+# 3 - Bagging -- A more advanced model of decision tree by taking the average of the outcome of the collection of decision trees
+# 4 - Random Forest -- Works similarly with Bagging, but with a more advanced and random features introduce in building the predictions to enhance accuracy and reduce overfitting
 
 
 #### LOGISTIC REGRESSION ####
