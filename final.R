@@ -153,5 +153,19 @@ test.pred.default <- predict(rf_default, newdata=test)
 confmatrix.rf.default <- confusionMatrix(test.pred.default, test$status, positive = "1", mode = 'everything')
 print(confmatrix.rf.default) # confusion matrix
 
+#### RF OOB PLOT #### 
+
+legends.oob <- rf_tune$err.rate
+colnames(legends.oob) <- c("OOB Error", "Closed (Class: 0)", "Acquired (Class: 1)")
+plot(rf_tune)
+legend("topright", colnames(legends.oob),col=1:4,cex=0.8,fill=1:4) # for legend
+
+#### VARIABLE IMPORTANCE PLOT #### 
+
+# Results indicate the importance of variables based on Mean Decrease Accuracy and Gini Index
+# MDA = higher value indicates the removal of variable leads to an impact on the accuracy results
+# MD Gini = higher value indicates the variable contributes to a more homogeneity of nodes 
+
+varImpPlot(rf_tune, main = "")
 
 
