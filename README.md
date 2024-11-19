@@ -1,4 +1,4 @@
-A data science project to predict the success of startups in the US. To build preidction, four models will be developed, from basic to a more advanced models. The target variable of the prediction will be whether the startup has been successfully acquired (_success = 1_) or closed (_success = 0_). 
+A data science project to predict the success of startups in the US. To build preidction, four models will be developed, from basic to a more advanced models. The target variable of the prediction will be whether the startup has been successfully acquired (_success = 1_) or closed (_success = 0_). Code is available in _final.R_
 
 **Models:**
 
