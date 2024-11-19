@@ -82,7 +82,6 @@ test  <- final_data2[-index,]
 # 3 - Bagging -- A more advanced model of decision tree by taking the average of the outcome of the collection of decision trees
 # 4 - Random Forest -- Works similarly with Bagging, but with a more advanced and random features introduce in building the predictions to enhance accuracy and reduce overfitting
 
-
 #### LOGISTIC REGRESSION ####
 
 set.seed(1000)
@@ -97,7 +96,7 @@ print(confmatrix.log) # confusion matrix
 
 summary(logistic_model) #company's status as top 500 highly determined the success of startup
 
-#### Decision Trees ####
+#### DECISION TREES ####
 
 set.seed(1000)
 dt_model <- rpart(status ~., 
@@ -107,8 +106,49 @@ predictions.dt <- predict(dt_model, type="class", newdata = test)
 confmatrix.dt <- confusionMatrix(predictions.dt, test$status, positive = "1")
 print(confmatrix.dt) # dt's confusion matrix
 
-#### Decision Trees ####
+rpart.plot(dt_model) # decision tree
 
+#### BAGGING ####
+
+n_pred <- ncol(final_data2) - 1
+set.seed(1000)
+bag <- randomForest(status ~ ., 
+                    data=train, 
+                    mtry=n_pred, 
+                    importance=TRUE)
+predictions.bagging <- predict(bag, newdata=test)
+confmatrix.bagging <- confusionMatrix(predictions.bagging, test$status, positive = "1", mode = 'everything')
+print(confmatrix.bagging) # confusion matrix
+
+#### RANDOM FOREST #### 
+
+# Cross validation to find the optimal m
+set.seed(1000)
+trControl <- trainControl(method = "cv",
+                          number = 5,
+                          search = "grid")
+tuneGrid <- expand.grid(.mtry = c(1: 10))
+rf_mtry <- train(status ~.,
+                 data = train,
+                 method = "rf",
+                 metric = "Accuracy",
+                 tuneGrid = tuneGrid,
+                 trControl = trControl,
+                 importance = TRUE, 
+                 ntree = 500)
+
+print(rf_mtry) # cv results
+
+# Random forest with optimal m
+set.seed(1000)
+rf_tune <- randomForest(status ~ ., 
+                        data=train, 
+                        mtry = rf_mtry$bestTune$mtry, 
+                        importance=TRUE,
+                        ntree = 500)
+test.pred.rf <- predict(rf_tune, newdata=test)
+confmatrix.rf <- confusionMatrix(test.pred.rf, test$status, positive = "1", mode = 'everything')
+print(confmatrix.rf) # confusion matrix
 
 
 
