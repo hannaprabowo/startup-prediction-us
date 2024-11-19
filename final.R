@@ -90,3 +90,15 @@ print(confmatrix.log) # confusion matrix
 
 summary(logistic_model) #company's status as top 500 highly determined the success of startup
 
+#### Decision Trees ####
+
+set.seed(1000)
+dt_model <- rpart(status ~., 
+                  data = train,
+                  method = 'class')
+predictions.dt <- predict(dt, type="class", newdata = test)
+confmatrix.dt <- confusionMatrix(predictions.dt, test$status, positive = "1")
+print(confmatrix.dt) # confusion matrix
+
+
+
