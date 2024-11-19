@@ -122,7 +122,7 @@ print(confmatrix.bagging) # confusion matrix
 
 #### RANDOM FOREST #### 
 
-# Cross validation to find the optimal m
+# Cross validation to find the optimal m (number of trees)
 set.seed(1000)
 trControl <- trainControl(method = "cv",
                           number = 5,
