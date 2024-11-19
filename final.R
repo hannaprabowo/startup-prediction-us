@@ -164,7 +164,7 @@ legend("topright", colnames(legends.oob),col=1:4,cex=0.8,fill=1:4) # for legend
 
 # Results indicate the importance of variables based on Mean Decrease Accuracy and Gini Index
 # MDA = higher value indicates the removal of variable leads to an impact on the accuracy results
-# MD Gini = higher value indicates the variable contributes to a more homogeneity of nodes 
+# MD Gini = higher value indicates the variable contributes to the homogeneity of the nodes
 
 varImpPlot(rf_tune, main = "")
 
