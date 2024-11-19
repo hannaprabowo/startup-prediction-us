@@ -76,6 +76,13 @@ test  <- final_data2[-index,]
 ################### BUILD MODELS #########################
 ##########################################################  
 
+# 4 models will be build to predict startup's success from basic to a more advanced prediction models
+# 1 - Logistic Regression 
+# 2 - Decision Trees
+# 3 - Bagging
+# 4 - Random Forest
+
+
 #### LOGISTIC REGRESSION ####
 
 set.seed(1000)
@@ -99,6 +106,10 @@ dt_model <- rpart(status ~.,
 predictions.dt <- predict(dt_model, type="class", newdata = test)
 confmatrix.dt <- confusionMatrix(predictions.dt, test$status, positive = "1")
 print(confmatrix.dt) # dt's confusion matrix
+
+#### Decision Trees ####
+
+
 
 
 
