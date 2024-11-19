@@ -100,7 +100,7 @@ predictions.dt <- predict(dt_model, type="class", newdata = test)
 confmatrix.dt <- confusionMatrix(predictions.dt, test$status, positive = "1")
 print(confmatrix.dt) # dt's confusion matrix
 
-rpart.plot(dt_model) # decision tree
+rpart.plot(dt_model) # decision tree plot
 
 #### BAGGING ####
 
@@ -112,11 +112,11 @@ bag <- randomForest(status ~ .,
                     importance=TRUE)
 predictions.bagging <- predict(bag, newdata=test)
 confmatrix.bagging <- confusionMatrix(predictions.bagging, test$status, positive = "1", mode = 'everything')
-print(confmatrix.bagging) # confusion matrix
+print(confmatrix.bagging) # bagging confusion matrix
 
 #### RANDOM FOREST #### 
 
-# Cross validation to find the optimal m (number of trees)
+# Cross validation to find the optimal m (number of trees), 5-cv
 set.seed(1000)
 trControl <- trainControl(method = "cv",
                           number = 5,
@@ -131,7 +131,7 @@ rf_mtry <- train(status ~.,
                  importance = TRUE, 
                  ntree = 500)
 
-print(rf_mtry) # cv results
+print(rf_mtry) # cv results, optimal number of tree is 5
 
 # Random forest with optimal m
 set.seed(1000)
@@ -142,8 +142,16 @@ rf_tune <- randomForest(status ~ .,
                         ntree = 500)
 test.pred.rf <- predict(rf_tune, newdata=test)
 confmatrix.rf <- confusionMatrix(test.pred.rf, test$status, positive = "1", mode = 'everything')
-print(confmatrix.rf) # confusion matrix
+print(confmatrix.rf) # random forest confusion matrix
 
+# Random Forest with default mtry (sqrt of # of variables) and ntrees for comparison #
+set.seed(1000)
+rf_default <- randomForest(status ~ ., 
+                           data=train, 
+                           importance=TRUE)
+test.pred.default <- predict(rf_default, newdata=test)
+confmatrix.rf.default <- confusionMatrix(test.pred.default, test$status, positive = "1", mode = 'everything')
+print(confmatrix.rf.default) # confusion matrix
 
 
 
