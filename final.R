@@ -72,6 +72,14 @@ index <- createDataPartition(final_data2$status, p = .7, list = FALSE)
 train <- final_data2[ index,]
 test  <- final_data2[-index,]
 
+################################################
+################### RQ #########################
+################################################  
+
+#1) What are the most important features to predict startup's success?
+
+
+
 ##########################################################
 ################### BUILD MODELS #########################
 ##########################################################  
