@@ -77,8 +77,7 @@ test  <- final_data2[-index,]
 ################################################  
 
 #1) What are the most important features to predict startup's success?
-
-
+#2) What model's offers the most accurate prediction of startup's success?
 
 ##########################################################
 ################### BUILD MODELS #########################
