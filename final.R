@@ -180,8 +180,10 @@ print(confmatrix.rf) # BA: 0.7356
 
 # In this analysis, we applied four different models, ranging from logistic regression to a more advanced use of decision tree, Random Forest.
 # Because there's a slight class imbalance on the target variable (0.35 vs 0.64), Balanced Accuracy will be used as the decision metric. 
-# This value calculates the accuracy and taking into account the class imbalance
+# This value calculates the accuracy and taking into account the presence of class imbalance in the data.
 
+# From the results, we can observe the value of accuracy incrementally increases with the use of a more advance models.
+# RF provides the most accurate prediction with a value of 74%. H
 
 #2) What are the most important features to predict startup's success?
 
