@@ -72,13 +72,6 @@ index <- createDataPartition(final_data2$status, p = .7, list = FALSE)
 train <- final_data2[ index,]
 test  <- final_data2[-index,]
 
-################################################
-################### RQ #########################
-################################################  
-
-#1) What are the most important features to predict startup's success?
-#2) What model's offers the most accurate prediction of startup's success?
-
 ##########################################################
 ################### BUILD MODELS #########################
 ##########################################################  
@@ -175,4 +168,9 @@ legend("topright", colnames(legends.oob),col=1:4,cex=0.8,fill=1:4) # for legend
 
 varImpPlot(rf_tune, main = "")
 
+################################################
+################### RQ #########################
+################################################  
 
+#1) What are the most important features to predict startup's success?
+#2) What model's offers the most accurate prediction of startup's success?
