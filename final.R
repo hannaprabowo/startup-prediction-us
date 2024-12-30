@@ -172,5 +172,18 @@ varImpPlot(rf_tune, main = "")
 ################### RQ #########################
 ################################################  
 
-#1) What are the most important features to predict startup's success?
-#2) What model's offers the most accurate prediction of startup's success?
+#1) What model's offers the most accurate prediction of startup's success?
+print(confmatrix.log)
+print(confmatrix.dt)
+print(confmatrix.bagging)
+print(confmatrix.rf)
+
+# In this analysis, we applied four different models, ranging from logistic regression to a more advanced use of decision tree, Random Forest.
+
+
+
+#2) What are the most important features to predict startup's success?
+
+
+
+
