@@ -183,7 +183,7 @@ print(confmatrix.rf) # BA: 0.7356
 # This value calculates the accuracy and taking into account the presence of class imbalance in the data.
 
 # From the results, we can observe the value of accuracy incrementally increases with the use of a more advance models.
-# RF provides the most accurate prediction with a value of 74%. H
+# RF provides the most accurate prediction with a value of 74%. This is not surprising given the randomness that are introduce when the model build its prediction.
 
 #2) What are the most important features to predict startup's success?
 
