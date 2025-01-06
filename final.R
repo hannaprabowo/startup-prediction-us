@@ -185,7 +185,7 @@ print(confmatrix.rf) # BA: 0.7356
 # From the results, we can observe the value of accuracy incrementally increases with the use of a more advance models.
 # RF provides the most accurate prediction with a value of 74%. This is not surprising given the randomness that are introduce when the model build its prediction.
 # However, in terms of interpretability, RF provides less clear process when it makes its decision compared to models such as logistic or decision tree.
-
+# RF provides a variable importance plot to showcase the variables that are 
 
 #2) What are the most important features to predict startup's success?
 
